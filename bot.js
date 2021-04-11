@@ -140,7 +140,7 @@ client.on("message", (message) => {
             case "guitar":
             case "guitars":
                 switch (args[0]) {
-                    case "":
+                    case undefined:
                     case "help":
                         const guitarMessage = new MessageEmbed()
                                                 .setColor(messageColor)
@@ -166,7 +166,7 @@ client.on("message", (message) => {
             case "mandolin":
             case "mando":
                 switch (args[0]) {
-                    case "":
+                    case undefined:
                     case "help":
                         const mandoMessage = new MessageEmbed()
                                                 .setColor(messageColor)
@@ -192,7 +192,7 @@ client.on("message", (message) => {
              case "banjo":
              case "banjos":
                 switch (args[0]) {
-                    case "":
+                    case undefined:
                     case "help":
                         const banjoMessage = new MessageEmbed()
                                                 .setColor(messageColor)
