@@ -135,34 +135,33 @@ client.on("message", (message) => {
             case "fifths":
             case "circle-of-fifths":
             case "circle-fifths":
-                sendImage(args[0], "Circle of Fifths", "Circle of Fifths", "circle-of-fifths", "circle, circles, fifths, circle-of-fifths, circle-fifths", "circle-of-fifths.jpg");
+                sendImage(args[0], "Circle of Fifths", "Circle of Fifths", "circle-of-fifths", "circle, circles, fifths, circle-of-fifths, circle-fifths", config.circle-of-fifths);
                 break;
             case "guitar-chords":
             case "guitar-chart-chords":
             case "guitar-chord-chart":
             case "chords-guitar":
             case "chord-chart-guitar":
-                sendImage(args[0], "Guitar Chord Chart", "Chord Chart for a 6-String Guitar in Standard Tuning", "guitar-chords", "guitar-chords, guitar-chart-chords, guitar-chord-chart, chords-guitar, chord-chart-guitar", "guitar-chord-chart.png");
+                sendImage(args[0], "Guitar Chord Chart", "Chord Chart for a 6-String Guitar in Standard Tuning", "guitar-chords", "guitar-chords, guitar-chart-chords, guitar-chord-chart, chords-guitar, chord-chart-guitar", config.guitar-chord-chart);
                 break;
             case "banjo-chords":
             case "banjo-chart-chords":
             case "banjo-chord-chart":
             case "chords-banjo":
             case "chord-chart-banjo":
-                sendImage(args[0], "Banjo Chord Chart", "Chord Chart for a Banjo in Open G Tuning", "banjo-chords", "banjo-chords, banjo-chart-chords, banjo-chord-chart, chords-banjo, chord-chart-banjo", "banjo-chord-chart.png");
+                sendImage(args[0], "Banjo Chord Chart", "Chord Chart for a Banjo in Open G Tuning", "banjo-chords", "banjo-chords, banjo-chart-chords, banjo-chord-chart, chords-banjo, chord-chart-banjo", config.banjo-chord-chart);
                 break;
             case "mandolin-chords":
             case "mando-chords":
             case "mandolin-chart-chords":
             case "mando-chart-chords":
-            case "mando-chord-chart":
             case "mandolin-chord-chart":
-
+            case "mando-chord-chart":
             case "chords-mandolin":
             case "chords-mando":
             case "chord-chart-mandolin":
             case "chords-chart-mando":
-                sendImage(args[0], "Mandolin Chord Chart", "Chord Chart for a Mandolin in Standard Tuning", "mando-chords", "mandolin-chords, mando-chords, mandolin-chart-chords, mando-chart-chords, mandolin-chord-chart, mando-chord-chart, chords-mandolin, chords-mando, chord-chart-mandolin, chords_chart_mando", "mandolin-chord-chart.jpg");
+                sendImage(args[0], "Mandolin Chord Chart", "Chord Chart for a Mandolin in Standard Tuning", "mando-chords", "mandolin-chords, mando-chords, mandolin-chart-chords, mando-chart-chords, mandolin-chord-chart, mando-chord-chart, chords-mandolin, chords-mando, chord-chart-mandolin, chords_chart_mando", config.mandolin-chord-chart);
                 break;
             case "guitar-scales":
             case "guitar-chart-scales":
@@ -170,7 +169,7 @@ client.on("message", (message) => {
             case "guitar-scales-chart":
             case "scales-guitar":
             case "scales-chart-guitar":
-                sendImage(args[0], "Guitar Scales Chart", "Scales Chart for a 6-String Guitar in Standard Tuning", "guitar-scales", "guitar-scales, guitar-chart-scales, guitar-scale-chart, guitar-scales-chart, scales-guitar, scales-chart-guitar", "guitar-scales-chart.jpg");
+                sendImage(args[0], "Guitar Scales Chart", "Scales Chart for a 6-String Guitar in Standard Tuning", "guitar-scales", "guitar-scales, guitar-chart-scales, guitar-scale-chart, guitar-scales-chart, scales-guitar, scales-chart-guitar", config.guitar-scales-chart);
                 break;
             case "mando-scales":
             case "mandolin-scales":
@@ -184,7 +183,7 @@ client.on("message", (message) => {
             case "scales-mandolin":
             case "scales-chart-mando":
             case "scales-chart-mandolin":
-                sendImage(args[0], "Mandolin Scales Chart", "Scales Chart for a Mandolin in Standard Tuning", "mando-scales", "mando-scales, mandolin-scalesm mando-chart-scales, mandolin-chart-scales, mando-scale-chart, mandolin-scale-chart, mando-scales-chart, mandolin-scales-chart, scales-mando, scales mandolin, scales-chart-mando, scales-chart-mandolin", "mandolin-scales-chart.jpg");
+                sendImage(args[0], "Mandolin Scales Chart", "Scales Chart for a Mandolin in Standard Tuning", "mando-scales", "mando-scales, mandolin-scalesm mando-chart-scales, mandolin-chart-scales, mando-scale-chart, mandolin-scale-chart, mando-scales-chart, mandolin-scales-chart, scales-mando, scales mandolin, scales-chart-mando, scales-chart-mandolin", config.mandolin-scales-chart);
                 break;
 
 
