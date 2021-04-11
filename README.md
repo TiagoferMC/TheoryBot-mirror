@@ -6,7 +6,7 @@ Made by Tiagofer for Lis_13
 
 ## Installation Instructions
 
-1. Make your own [Discord Bot](https://discord.com/developers/applications) and add it to your Discord server. Required permissions are Read Messages, Attach, Embed, React
+1. Make your own [Discord Bot](https://discord.com/developers/applications) and add it to your Discord server. There are loads of tutorials on this, look one up. Required permissions are View Channels, Send Messages, Manage Messages, Embed Links, Attach Files, Read Message History, Use External Emojis, and Add Reactions.
 1. Install [NodeJS and NPM](https://nodejs.org/) on your System
 1. Clone the repo to a folder of your choice
 1. Make a config.js file (an example one is provided)
