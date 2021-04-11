@@ -203,7 +203,7 @@ const adapter = new FileAsync(config.dbFile);
                                     .find({guildID: message.guild.id })
                                     .assign({color: args[0].toUpperCase()})
                                     .write();
-                                accentColor = args[0];
+                                accentColor = args[0].toUpperCase();
                                 sendMessage(`Accent color changed to ${args[0]}`);
 
                             } else
