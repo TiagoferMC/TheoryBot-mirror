@@ -39,7 +39,7 @@ client.on("message", (message) => {
             const imgMessage = new MessageEmbed()
                 .setColor(messageColor)
                 .setTitle(`TheoryBot - ${title}`)
-                .attachFiles([`./img/${img}`])
+                .attachFiles([`${config.imgFolder}/${img}`])
                 .setImage(`attachment://${img}`);
 
             sendEmbeddedMessage(imgMessage);
