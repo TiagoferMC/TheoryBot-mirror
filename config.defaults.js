@@ -1,9 +1,10 @@
 export default
 {
+    "botToken": "YOUR TOKEN HERE!",
     "defaultPrefix": "!",
     "defaultAccentColor":"#0099FF",
-    "botToken": "YOUR TOKEN HERE!",
-    "imgFolder": "./FolderName",
+    "dbFile": "./db.json",
+    "imgFolder": "./img",
     "circleOfFifths": "",
     "basicTerms": "",
     "basicTerms2": "",

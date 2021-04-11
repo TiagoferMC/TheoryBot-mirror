@@ -38,7 +38,7 @@ const colors = [
     "NOT_QUITE_BLACK",
 ];
 
-const adapter = new FileAsync("db.json");
+const adapter = new FileAsync(config.dbFile);
 (async () => {
     const db = await low(adapter);
     db.defaults({ guilds: [] }).write();
