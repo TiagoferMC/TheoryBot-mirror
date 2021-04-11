@@ -5,12 +5,12 @@
   "main": "bot.js",
   "type": "module",
   "repository": {
-      "type": "git",
-      "url": "https://gitlab.com/Tiagofer/theorybot.git"
+    "type": "git",
+    "url": "https://gitlab.com/Tiagofer/theorybot.git"
   },
   "scripts": {
     "start": "node bot.js",
-    "dev": "nodemon bot.js"
+    "dev": "nodemon bot.js --ignore 'db.json'"
   },
   "keywords": [
     "discord",
@@ -26,6 +26,8 @@
   "license": "0BSD",
   "dependencies": {
     "discord.js": "*",
-    "nodemon": "*"
+    "lowdb": "*",
+    "nodemon": "*",
+    "validate-color": "*"
   }
 }

@@ -4,6 +4,9 @@ config.js
 # Likely Copywritten Files
 img/
 
+# Database
+db.json
+
 # Logs
 logs
 *.log
