@@ -7,6 +7,9 @@ img/
 # Database
 db.json
 
+# Node
+package-lock.json
+
 # Logs
 logs
 *.log
