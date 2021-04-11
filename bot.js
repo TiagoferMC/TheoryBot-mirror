@@ -66,7 +66,7 @@ client.on("message", (message) => {
                     inline: true
                 },
                 {   name: "String Instruments",
-                    value: "guitar-chords\nbanjo-chords\nmandolin-chords\nguitar-scales\nmandolin-scales",
+                    value: "guitar\nmandolin\nbanjo",
                     inline: true
                 },
                 {   name: "Miscelaneous",
@@ -137,53 +137,85 @@ client.on("message", (message) => {
             case "circle-fifths":
                 sendImage(args[0], "Circle of Fifths", "Circle of Fifths", "circle-of-fifths", "circle, circles, fifths, circle-of-fifths, circle-fifths", config.circleOfFifths);
                 break;
-            case "guitar-chords":
-            case "guitar-chart-chords":
-            case "guitar-chord-chart":
-            case "chords-guitar":
-            case "chord-chart-guitar":
-                sendImage(args[0], "Guitar Chord Chart", "Chord Chart for a 6-String Guitar in Standard Tuning", "guitar-chords", "guitar-chords, guitar-chart-chords, guitar-chord-chart, chords-guitar, chord-chart-guitar", config.guitarChordChart);
+            case "guitar":
+            case "guitars":
+                switch (args[0]) {
+                    case "":
+                    case "help":
+                        const guitarMessage = new MessageEmbed()
+                                                .setColor(messageColor)
+                                                .setTitle("TheoryBot - Guitar")
+                                                .setDescription("Guitar Related Commands")
+                                                .addField("Available Commands", `chords\nscales`)
+                                                .setFooter("Aliases: guitar, guitars");
+                        sendEmbeddedMessage(guitarMessage);
+                        break;
+                    case "chords":
+                    case "chord":
+                        sendImage(args[0], "Guitar Chord Chart", "Chord Chart for a 6-String Guitar in Standard Tuning", "guitar chord", "guitar chord, guitar chords, guitars chord, guitars chords", config.guitarChordChart);
+                        break;
+                    case "scales":
+                    case "scale":
+                        sendImage(args[0], "Guitar Scales Chart", "Scales Chart for a 6-String Guitar in Standard Tuning", "guitar scales", "guitar scales, guitar scale, guitars scales, guitars scale", config.guitarScalesChart);
+                        break;
+                    default:
+                        sendMessage(`${command} ${args[0]} is not a valid TheoryBot command.\n\nSee ${prefix}${command} help for available commands.`);
+                        break;
+                }
                 break;
-            case "banjo-chords":
-            case "banjo-chart-chords":
-            case "banjo-chord-chart":
-            case "chords-banjo":
-            case "chord-chart-banjo":
-                sendImage(args[0], "Banjo Chord Chart", "Chord Chart for a Banjo in Open G Tuning", "banjo-chords", "banjo-chords, banjo-chart-chords, banjo-chord-chart, chords-banjo, chord-chart-banjo", config.banjoChordChart);
+            case "mandolin":
+            case "mando":
+                switch (args[0]) {
+                    case "":
+                    case "help":
+                        const mandoMessage = new MessageEmbed()
+                                                .setColor(messageColor)
+                                                .setTitle("TheoryBot - Mandolin")
+                                                .setDescription("Mandolin Related Commands")
+                                                .addField("Available Commands", `chords\nscales`)
+                                                .setFooter("Aliases: mandolin, mandolins, mando, mandos");
+                        sendEmbeddedMessage(mandoMessage);
+                        break;
+                    case "chords":
+                    case "chord":
+                        sendImage(args[0], "Mandolin Chord Chart", "Chord Chart for a Mandolin in Standard Tuning", "mando chords", "mandolin chords, mandolin chord, mando chords, mando chord", config.mandolinChordChart);
+                        break;
+                    case "scales":
+                    case "scale":
+                        sendImage(args[0], "Mandolin Scales Chart", "Scales Chart for a Mandolin in Standard Tuning", "mando scales", "mandolin scales, mando scales, mandolin scale, mando scale", config.mandolinScalesChart);
+                        break;
+                    default:
+                        sendMessage(`${command} ${args[0]} is not a valid TheoryBot command.\n\nSee ${prefix}${command} help for available commands.`);
+                        break;
+                }
                 break;
-            case "mandolin-chords":
-            case "mando-chords":
-            case "mandolin-chart-chords":
-            case "mando-chart-chords":
-            case "mandolin-chord-chart":
-            case "mando-chord-chart":
-            case "chords-mandolin":
-            case "chords-mando":
-            case "chord-chart-mandolin":
-            case "chords-chart-mando":
-                sendImage(args[0], "Mandolin Chord Chart", "Chord Chart for a Mandolin in Standard Tuning", "mando-chords", "mandolin-chords, mando-chords, mandolin-chart-chords, mando-chart-chords, mandolin-chord-chart, mando-chord-chart, chords-mandolin, chords-mando, chord-chart-mandolin, chords_chart_mando", config.mandolinChordChart);
-                break;
-            case "guitar-scales":
-            case "guitar-chart-scales":
-            case "guitar-scale-chart":
-            case "guitar-scales-chart":
-            case "scales-guitar":
-            case "scales-chart-guitar":
-                sendImage(args[0], "Guitar Scales Chart", "Scales Chart for a 6-String Guitar in Standard Tuning", "guitar-scales", "guitar-scales, guitar-chart-scales, guitar-scale-chart, guitar-scales-chart, scales-guitar, scales-chart-guitar", config.guitarScalesChart);
-                break;
-            case "mando-scales":
-            case "mandolin-scales":
-            case "mando-chart-scales":
-            case "mandolin-chart-scales":
-            case "mando-scale-chart":
-            case "mandolin-scale-chart":
-            case "mando-scales-chart":
-            case "mandolin-scales-chart":
-            case "scales-mando":
-            case "scales-mandolin":
-            case "scales-chart-mando":
-            case "scales-chart-mandolin":
-                sendImage(args[0], "Mandolin Scales Chart", "Scales Chart for a Mandolin in Standard Tuning", "mando-scales", "mando-scales, mandolin-scalesm mando-chart-scales, mandolin-chart-scales, mando-scale-chart, mandolin-scale-chart, mando-scales-chart, mandolin-scales-chart, scales-mando, scales mandolin, scales-chart-mando, scales-chart-mandolin", config.mandolinScalesChart);
+             case "banjo":
+             case "banjos":
+                switch (args[0]) {
+                    case "":
+                    case "help":
+                        const banjoMessage = new MessageEmbed()
+                                                .setColor(messageColor)
+                                                .setTitle("TheoryBot - Banjo")
+                                                .setDescription("Banjo Related Commands")
+                                                .addField("Available Commands", `chords\n~~scales~~ TBA`)
+                                                .setFooter("Aliases: banjo, banjos");
+                        sendEmbeddedMessage(banjoMessage);
+                        break;
+                    case "chords":
+                    case "chord":
+                        sendImage(args[0], "Banjo Chord Chart", "Chord Chart for a Banjo in Open G Tuning", "banjo chords", "banjo chords, banjo chord, banjos chords, banjos chord", config.banjoChordChart);
+                        break;
+                    case "scales":
+                    case "scale":
+                        sendMessage(`Banjo Scales are coming soon!`);
+                        // TODO
+                        break;
+                    default:
+                        sendMessage(`${command} ${args[0]} is not a valid TheoryBot command.\n\nSee ${prefix}${command} help for available commands.`);
+                        break;
+                }
+
                 break;
 
 
