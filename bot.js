@@ -36,6 +36,7 @@ const colors = [
     "GREYPLE",
     "DARK_BUT_NOT_BLACK",
     "NOT_QUITE_BLACK",
+    "RANDOM"
 ];
 
 const adapter = new FileAsync(config.dbFile);
