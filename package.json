@@ -1,0 +1,31 @@
+{
+  "name": "theorybot",
+  "version": "1.0.0",
+  "description": "A Discord Bot that helps you learn music theory",
+  "main": "bot.js",
+  "type": "module",
+  "repository": {
+      "type": "git",
+      "url": "https://gitlab.com/Tiagofer/theorybot.git"
+  },
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "nodemon bot.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "discord",
+    "bot",
+    "music",
+    "music",
+    "theory",
+    "theory"
+  ],
+  "author": "Tiagofer",
+  "license": "0BSD",
+  "dependencies": {
+    "discord.js": "*",
+    "nodemon": "*"
+  }
+}
