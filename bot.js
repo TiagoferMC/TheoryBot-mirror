@@ -94,10 +94,9 @@ const adapter = new FileAsync(config.dbFile);
         let accentColor = await db.get("guilds").find({guildID: message.guild.id}).valueOf().color;
 
         function sendMessage(content) {
-            const embeddedMessage = new MessageEmbed()
+            message.channel.send(new MessageEmbed()
                 .setColor(accentColor)
-                .addField("TheoryBot", content);
-            message.channel.send(embeddedMessage);
+                .addField("TheoryBot", content));
         }
 
         function sendEmbeddedMessage(embeddedContent) {
@@ -105,24 +104,19 @@ const adapter = new FileAsync(config.dbFile);
         }
 
         function sendImage(arg, title, description, usage, aliases, img) {
-            if (arg == "help") {
-                const imgHelpMessage = new MessageEmbed()
+            if (arg == "help")
+                sendEmbeddedMessage(new MessageEmbed()
                     .setColor(accentColor)
                     .setTitle(`TheoryBot - ${title}`)
                     .setDescription(`Shows a quick and handy ${description}`)
                     .addField("Usage", `${prefix}${usage}`)
-                    .setFooter(`Aliases: ${aliases}`);
-
-                sendEmbeddedMessage(imgHelpMessage);
-            } else {
-                const imgMessage = new MessageEmbed()
+                    .setFooter(`Aliases: ${aliases}`));
+            else
+                sendEmbeddedMessage(new MessageEmbed()
                     .setColor(accentColor)
                     .setTitle(`TheoryBot - ${title}`)
                     .attachFiles([`${config.imgFolder}/${img}`])
-                    .setImage(`attachment://${img}`);
-
-                sendEmbeddedMessage(imgMessage);
-            }
+                    .setImage(`attachment://${img}`));
         }
 
         if (!message.content.startsWith(prefix) || message.author.bot) return;
@@ -134,34 +128,24 @@ const adapter = new FileAsync(config.dbFile);
         try {
             switch (command) {
                 case "help":
-                    const helpMessage = new MessageEmbed()
+                    sendEmbeddedMessage(new MessageEmbed()
                         .setColor(accentColor)
                         .setTitle("TheoryBot")
                         .setURL("")
                         .setAuthor("Tiagofer")
                         .setDescription("A Discord bot that helps you learn music theory.")
                         .setThumbnail("")
-                        .addFields(
-                    {   name: "Basic Music Theory",
-                        value: "intervals\ncircle-fifths",
-                        inline: true
-                    },
-                    {   name: "String Instruments",
-                        value: "guitar\nmandolin\nbanjo",
-                        inline: true
-                    },
-                    {   name: "Miscelaneous",
-                        value: "help\nprefix :gear:\ncolor :gear:",
-                        inline: true
-                    },
-                    {   name: "\u200b",
-                        value: "You can type 'help' after any command to see a short description of what it does.\n\nCommands with a :gear: icon next to them can only be used by Administrators.",
-                        inline: false
-                    })
-                        .setFooter("Made by Tiagofer for Lis_13");
-
-                    sendEmbeddedMessage(helpMessage);
-
+                        .addField("Basic Music Theory", "intervals\n \
+                            circle-fifths", true)
+                        .addField("String Instruments", "guitar\n \
+                            mandolin\n \
+                            banjo", true)
+                        .addField("Miscelaneous", "help\n \
+                            prefix :gear:\n \
+                            color :gear:", true)
+                        .addField("\u200b", "You can type 'help' after any command to see a short description of what it does.\n\n \
+                            Commands with a :gear: icon next to them can only be used by Administrators.", false)
+                        .setFooter("Made by Tiagofer for Lis_13"));
                     break;
                 case "prefix":
                     if (args[0] && args[0] != "help") {
@@ -174,28 +158,26 @@ const adapter = new FileAsync(config.dbFile);
                         } else
                             sendMessage(noPermissionMessage);
                     } else {
-                        const prefixMessage = new MessageEmbed()
-                                                    .setColor(accentColor)
-                                                    .setTitle("TheoryBot - Prefix")
-                                                    .setDescription("Allows an admin to change the bot's prefix.")
-                                                    .addField("Usage", `${prefix}prefix <new prefix>`)
-                                                    .addField("Example", `${prefix}prefix ${prefix == '?' ? '!' : '?'}`)
-                                                    .setFooter("Aliases: prefix");
-                        sendEmbeddedMessage(prefixMessage);
+                        sendEmbeddedMessage(new MessageEmbed()
+                            .setColor(accentColor)
+                            .setTitle("TheoryBot - Prefix")
+                            .setDescription("Allows an admin to change the bot's prefix.")
+                            .addField("Usage", `${prefix}prefix <new prefix>`)
+                            .addField("Example", `${prefix}prefix ${prefix == '?' ? '!' : '?'}`)
+                            .setFooter("Aliases: prefix"));
                     }
                     break;
                 case "accent-color":
                 case "color":
                     if (args[0] == "list") {
-                        const colorListMessage = new MessageEmbed()
-                                                    .setColor(accentColor)
-                                                    .setTitle("TheoryBot - Named Color List")
-                                                    .setDescription("Named Colors Discord Supports")
-                                                    .addField("\u200b", "DEFAULT\nWHITE\nAQUA\nGREEN\nBLUE\nYELLOW\nPURPLE\nLUMINOUS_VIVID_PINK\nGOLD\nORANGE", true)
-                                                    .addField("\u200b", "RED\nGREY\nDARKER_GREY\nNAVY\nDARK_AQUA\nDARK_GREEN\nDARK_BLUE\nDARK_PURPLE\nDARK_VIVID_PINK\nDARK_GOLD", true)
-                                                    .addField("\u200b", "DARK_ORANGE\nDARK_RED\nDARK_GREY\nLIGHT_GREY\nDARK_NAVY\nBLURPLE\nGREYPLE\nDARK_BUT_NOT_BLACK\nNOT_QUITE_BLACK\nRANDOM", true)
-                                                    .setFooter("Aliases: color, accent-color");
-                        sendEmbeddedMessage(colorListMessage);
+                        sendEmbeddedMessage(new MessageEmbed()
+                            .setColor(accentColor)
+                            .setTitle("TheoryBot - Named Color List")
+                            .setDescription("Named Colors Discord Supports")
+                            .addField("\u200b", "DEFAULT\nWHITE\nAQUA\nGREEN\nBLUE\nYELLOW\nPURPLE\nLUMINOUS_VIVID_PINK\nGOLD\nORANGE", true)
+                            .addField("\u200b", "RED\nGREY\nDARKER_GREY\nNAVY\nDARK_AQUA\nDARK_GREEN\nDARK_BLUE\nDARK_PURPLE\nDARK_VIVID_PINK\nDARK_GOLD", true)
+                            .addField("\u200b", "DARK_ORANGE\nDARK_RED\nDARK_GREY\nLIGHT_GREY\nDARK_NAVY\nBLURPLE\nGREYPLE\nDARK_BUT_NOT_BLACK\nNOT_QUITE_BLACK\nRANDOM", true)
+                            .setFooter("Aliases: color, accent-color"));
                     } else if (args[0] && args[0] != "help") {
                         if (message.member.hasPermission("ADMINISTRATOR", { checkAdmin: true, checkOwner: true })) {
                             if (validateHTMLColorHex(args[0]) || colors.includes(args[0].toUpperCase())) {
@@ -211,14 +193,15 @@ const adapter = new FileAsync(config.dbFile);
                         } else
                             sendMessage(noPermissionMessage);
                     } else {
-                        const colorMessage = new MessageEmbed()
-                                                    .setColor(accentColor)
-                                                    .setTitle("TheoryBot - Color")
-                                                    .setDescription(`Allows an admin to change the bot's accent color.\n\nThe color can be any HEX code or one of the color names supported by Discord.\nRun '${prefix}color list' for a full list of supported named colors.`)
-                                                    .addField("Usage", `${prefix}color <new color>`)
-                                                    .addField("Examples", `${prefix}color #0099FF\n${prefix}color Dark_Cyan`)
-                                                    .setFooter("Aliases: color, accent-color");
-                        sendEmbeddedMessage(colorMessage);
+                        sendEmbeddedMessaga(new MessageEmbed()
+                            .setColor(accentColor)
+                            .setTitle("TheoryBot - Color")
+                            .setDescription(`Allows an admin to change the bot's accent color.\n\n \
+                                The color can be any HEX code or one of the color names supported by Discord.\n \
+                                Run '${prefix}color list' for a full list of supported color names.`)
+                            .addField("Usage", `${prefix}color <new color>`)
+                            .addField("Examples", `${prefix}color #0099FF\n${prefix}color Dark_Cyan`)
+                            .setFooter("Aliases: color, accent-color"));
                     }
                     break;
                 case "interval":
@@ -233,22 +216,21 @@ const adapter = new FileAsync(config.dbFile);
                             const note2 = `${args[1].charAt(0).toUpperCase()}${args[1].charAt(1)}`;
                             const intervalBetween = music.interval(note1, note2);
 
-                            if (intervalBetween != -1)
-                                sendMessage(`${note1} and ${note2} are a ${intervalBetween} apart.`);
-                            else
+                            if (intervalBetween == -1)
                                 sendMessage(`Interval Unsupported`);
+                            else
+                                sendMessage(`${note1} and ${note2} are a ${intervalBetween} apart.`);
                         }
                         break;
                     } else {
-                        const intervalMessage = new MessageEmbed()
-                                                    .setColor(accentColor)
-                                                    .setTitle("TheoryBot - Interval")
-                                                    .setDescription("Outputs the interval between two given notes.\nDouble Sharp and Double Diminished notes are not supported at the present time")
-                                                    .addField("Usage", `${prefix}interval <note> <note>`).addField("Example", `${prefix}interval E Gb`)
-                                                    .setFooter("Aliases: interval, intervals");
-                        sendEmbeddedMessage(intervalMessage);
+                        sendEmbeddedMessage(new MessageEmbed()
+                            .setColor(accentColor)
+                            .setTitle("TheoryBot - Interval")
+                            .setDescription("Outputs the interval between two given notes.\n \
+                                Double Sharp and Double Diminished notes are not supported at the present time")
+                            .addField("Usage", `${prefix}interval <note> <note>`).addField("Example", `${prefix}interval E Gb`)
+                            .setFooter("Aliases: interval, intervals"));
                     }
-
                     break;
                 case "circle":
                 case "circles":
@@ -262,21 +244,47 @@ const adapter = new FileAsync(config.dbFile);
                     switch (args[0]) {
                         case undefined:
                         case "help":
-                            const guitarMessage = new MessageEmbed()
-                                                    .setColor(accentColor)
-                                                    .setTitle("TheoryBot - Guitar")
-                                                    .setDescription("Guitar Related Commands")
-                                                    .addField("Available Commands", `chords\nscales`)
-                                                    .setFooter("Aliases: guitar, guitars");
-                            sendEmbeddedMessage(guitarMessage);
+                            sendEmbeddedMessage(new MessageEmbed()
+                                .setColor(accentColor)
+                                .setTitle("TheoryBot - Guitar")
+                                .setDescription("Guitar Related Commands")
+                                .addField("Available Commands", `chords\n \
+                                    scales\n \
+                                    tunings`)
+                                .setFooter("Aliases: guitar, guitars"));
                             break;
                         case "chords":
                         case "chord":
-                            sendImage(args[0], "Guitar Chord Chart", "Chord Chart for a 6-String Guitar in Standard Tuning", "guitar chord", "guitar chord, guitar chords, guitars chord, guitars chords", config.guitarChordChart);
+                            sendImage(args[1], "Guitar Chord Chart", "Chord Chart for a 6-String Guitar in Standard Tuning", "guitar chord", "guitar chords, guitar chord, guitars chords, guitars chord", config.guitarChordChart);
                             break;
                         case "scales":
                         case "scale":
-                            sendImage(args[0], "Guitar Scales Chart", "Scales Chart for a 6-String Guitar in Standard Tuning", "guitar scales", "guitar scales, guitar scale, guitars scales, guitars scale", config.guitarScalesChart);
+                            sendImage(args[1], "Guitar Scales Chart", "Scales Chart for a 6-String Guitar in Standard Tuning", "guitar scales", "guitar scales, guitar scale, guitars scales, guitars scale", config.guitarScalesChart);
+                            break;
+                        case "tunings":
+                        case "tuning":
+                        case "tune":
+                            if (args[1] == "help")
+                                sendEmbeddedMessage(new MessageEmbed()
+                                    .setColor(accentColor)
+                                    .setTitle("TheoryBot - Guitar Tunings")
+                                    .setDescription("Shows a list of common Guitar Tunings")
+                                    .addField("Usage", `${prefix}guitar tunings`)
+                                    .setFooter("Aliases: guitar tunings, guitar tuning, guitar tune, guitars tunings, guitars tuning, guitars tune"));
+                            else
+                                sendEmbeddedMessage(new MessageEmbed()
+                                    .setColor(accentColor)
+                                    .setTitle("Common Guitar Tunings")
+                                    .addField("Standard Tuning", "E₂-A₂-D₃-G₃-B₃-E₄", true)
+                                    .addField("New Standard Tuning (NST)", "C₂-G₂-D₃-A₃-E₄-G₄", true)
+                                    .addField("Eb Standard (Hendrix) Tuning", "Eb₂-Ab₂-Db₃-Gb₃-Bb₃-Eb₄", true)
+                                    .addField("Open G", "D₂-G₂-D₃-G₃-B₃-D₄\n \
+                                                        G₂-B₂-D₃-G₃-B₃-D₄ (Dobro)", true)
+                                    .addField("Open E", "E₂-B₂-E₃-Ab₃-B₃-E₄", true)
+                                    .addField("Open C", "C₂-G₂-C₃-G₃-C₄-E₄", true)
+                                    .addField("Drop D", "D₂-A₂-D₃-G₃-B₃-E₄", true)
+                                    .addField("Double Drop D", "D₂-A₂-D₃-G₃-B₃-D₄", true)
+                                    .addField("Drop C", "C₂-G₂-C₃-F₃-A₃-D₄", true));
                             break;
                         default:
                             sendMessage(`${command} ${args[0]} is not a valid TheoryBot command.\n\nSee ${prefix}${command} help for available commands.`);
@@ -288,21 +296,42 @@ const adapter = new FileAsync(config.dbFile);
                     switch (args[0]) {
                         case undefined:
                         case "help":
-                            const mandoMessage = new MessageEmbed()
-                                                    .setColor(accentColor)
-                                                    .setTitle("TheoryBot - Mandolin")
-                                                    .setDescription("Mandolin Related Commands")
-                                                    .addField("Available Commands", `chords\nscales`)
-                                                    .setFooter("Aliases: mandolin, mandolins, mando, mandos");
-                            sendEmbeddedMessage(mandoMessage);
+                            sendEmbeddedMessage(new MessageEmbed()
+                                .setColor(accentColor)
+                                .setTitle("TheoryBot - Mandolin")
+                                .setDescription("Mandolin Related Commands")
+                                .addField("Available Commands", `chords\n \
+                                    scales \
+                                    tunings`)
+                                .setFooter("Aliases: mandolin, mandolins, mando, mandos"));
                             break;
                         case "chords":
                         case "chord":
-                            sendImage(args[0], "Mandolin Chord Chart", "Chord Chart for a Mandolin in Standard Tuning", "mando chords", "mandolin chords, mandolin chord, mando chords, mando chord", config.mandolinChordChart);
+                            sendImage(args[1], "Mandolin Chord Chart", "Chord Chart for a Mandolin in Standard Tuning", "mando chords", "mandolin chords, mandolin chord, mandolins chords, mandolins chord, mando chords, mando chord, mandos chords, mando chord", config.mandolinChordChart);
                             break;
                         case "scales":
                         case "scale":
-                            sendImage(args[0], "Mandolin Scales Chart", "Scales Chart for a Mandolin in Standard Tuning", "mando scales", "mandolin scales, mando scales, mandolin scale, mando scale", config.mandolinScalesChart);
+                            sendImage(args[1], "Mandolin Scales Chart", "Scales Chart for a Mandolin in Standard Tuning", "mando scales", "mandolin scales, mandolin scale, mandolins scales, mandolins scale, mando scales, mando scale, mandos scales, mandos scale", config.mandolinScalesChart);
+                            break;
+                        case "tunings":
+                        case "tuning":
+                        case "tune":
+                            if (args[1] == "help")
+                                sendEmbeddedMessage(new MessageEmbed()
+                                    .setColor(accentColor)
+                                    .setTitle("TheoryBot - Mandolin Tunings")
+                                    .setDescription("Shows a list of common Mandolin Tunings")
+                                    .addField("Usage", `${prefix}mando tunings`)
+                                    .setFooter("Aliases: mandolin tunings, mandolin tuning, mandolin tune, mandolins tunings, mandolins tuning, mandolins tune, mando tunings, mando tuning, mandolin tune, mandos tunes, mandos tune, mandos tune"));
+                            else
+                                sendEmbeddedMessage(new MessageEmbed()
+                                    .setColor(accentColor)
+                                    .setTitle("Common Mandolin Tunings")
+                                    .addField("Mandolin Standard Tuning", "G₂-D₃-A₃-E₄", true)
+                                    .addField("High D", "G₂-D₃-A₃-D₄", true)
+                                    .addField("Drop? A", "A₂-D₃-A₃-E₄", true)
+                                    .addField("Open G", "G₂-D₃-G₃-D₄", true)
+                                    .addField("G Power Tuning", "G₂-D₃-G₃-B(₄/₃?)", true));
                             break;
                         default:
                             sendMessage(`${command} ${args[0]} is not a valid TheoryBot command.\n\nSee ${prefix}${command} help for available commands.`);
@@ -314,28 +343,44 @@ const adapter = new FileAsync(config.dbFile);
                     switch (args[0]) {
                         case undefined:
                         case "help":
-                            const banjoMessage = new MessageEmbed()
-                                                    .setColor(accentColor)
-                                                    .setTitle("TheoryBot - Banjo")
-                                                    .setDescription("Banjo Related Commands")
-                                                    .addField("Available Commands", `chords\n~~scales~~ TBA`)
-                                                    .setFooter("Aliases: banjo, banjos");
-                            sendEmbeddedMessage(banjoMessage);
+                            sendEmbeddedMessage(new MessageEmbed()
+                                .setColor(accentColor)
+                                .setTitle("TheoryBot - Banjo")
+                                .setDescription("Banjo Related Commands")
+                                .addField("Available Commands", `chords\n \
+                                    ~~scales~~ TBA \
+                                    tunings`)
+                                .setFooter("Aliases: banjo, banjos"));
                             break;
                         case "chords":
                         case "chord":
-                            sendImage(args[0], "Banjo Chord Chart", "Chord Chart for a Banjo in Open G Tuning", "banjo chords", "banjo chords, banjo chord, banjos chords, banjos chord", config.banjoChordChart);
+                            sendImage(args[1], "Banjo Chord Chart", "Chord Chart for a Banjo in Open G Tuning", "banjo chords", "banjo chords, banjo chord, banjos chords, banjos chord", config.banjoChordChart);
                             break;
                         case "scales":
                         case "scale":
                             sendMessage(`Banjo Scales are coming soon!`);
                             // TODO
                             break;
-                        default:
+                        case "tunings":
+                        case "tuning":
+                        case "tune":
+                            if (args[1] == "help")
+                                sendEmbeddedMessage(new MessageEmbed()
+                                    .setColor(accentColor)
+                                    .setTitle("TheoryBot - Banjo Tunings")
+                                    .setDescription("Shows a list of common Banjo Tunings")
+                                    .addField("Usage", `${prefix}banjo tunings`)
+                                    .setFooter("Aliases: banjo tunings, banjo tuning, banjo tune, banjos tunings, banjos tuning, banjos tune"));
+                            else
+                                sendEmbeddedMessage(new MessageEmbed()
+                                    .setColor(accentColor)
+                                    .setTitle("Common Banjo Tunings")
+                                    .addField("Banjo Standard (Open G)", "G₄-D₃-G₃-B₃-D₄", true)
+                                    .addField("Banjo Old-time D", "A₄-D₃-A₃-D₄-E₄", true));
+                            break; default:
                             sendMessage(`${command} ${args[0]} is not a valid TheoryBot command.\n\nSee ${prefix}${command} help for available commands.`);
                             break;
                     }
-
                     break;
 
 
