@@ -79,8 +79,9 @@ const adapter = new FileAsync(config.dbFile);
     client.once("ready", async () => {
         console.log("Discord Bot Ready!");
         await db.get("guilds").forEach(async dbGuild => {
-                if (client.guilds.cache.filter(id == dbGuild.id))
-                    await deleteDBGuild(dbGuild.id);
+                console.log(client.guilds.cache.filter(guild => id == dbGuild.id));
+                //if (client.guilds.cache.filter(guild => id == dbGuild.id))
+                //await deleteDBGuild(dbGuild.id);
         });
 
         client.guilds.cache.forEach(async guild => {

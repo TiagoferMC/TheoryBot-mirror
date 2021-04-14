@@ -111,6 +111,8 @@ export function interval(note1, note2) {
     switch (noInterval) {
         case 1:
             switch (noSemitones) {
+                case 9:
+                    return "Triple Diminished Octave (dddim8)";
                 case 10:
                     return "Double Diminished Octave (ddim8)";
                 case 11:
@@ -121,12 +123,16 @@ export function interval(note1, note2) {
                     return "Augmented Unison (Aug1)";
                 case 2:
                     return "Double Augmented Unison (AAug1)";
+                case 3:
+                    return "Triple Augmented Unison (AAAug1)";
                 default:
                     return -1;
             }
             break;
         case 2:
             switch (noSemitones) {
+                case 10:
+                    return "Triple Diminished Second (dddim2)";
                 case 11:
                     return "Double Diminished Second (ddim2)";
                 case 0:
@@ -139,12 +145,16 @@ export function interval(note1, note2) {
                     return "Augmented Second (Aug2)";
                 case 4:
                     return "Double Augmented Second (AAug2)";
+                case 5:
+                    return "Triple Augmented Second (AAAug2)";
                 default:
                     return -1;
             }
             break;
         case 3:
             switch (noSemitones) {
+                case 0:
+                    return "Triple Diminished Third (dddim3)";
                 case 1:
                     return "Double Diminished Third (ddim3)";
                 case 2:
@@ -157,12 +167,16 @@ export function interval(note1, note2) {
                     return "Augmented Third (Aug3)";
                 case 6:
                     return "Double Augmented Third (AAug3)";
+                case 7:
+                    return "Triple Augmented Third (AAAug3)";
                 default:
                     return -1;
             }
             break;
         case 4:
             switch (noSemitones) {
+                case 2:
+                    return "Triple Diminished Fourth (dddim4)";
                 case 3:
                     return "Double Diminished Fourth (ddim4)";
                 case 4:
@@ -171,14 +185,18 @@ export function interval(note1, note2) {
                     return "Perfect Fourth (P4)";
                 case 6:
                     return "Augmented Fourth (Aug4) / TriTone (TT)";
-                case 6:
+                case 7:
                     return "Double Augmented Fourth (AAug4)";
+                case 8:
+                    return "Triple Augmented Fourth (AAAug4)";
                 default:
                     return -1;
             }
             break;
         case 5:
             switch (noSemitones) {
+                case 4:
+                    return "Triple Diminished Fifth (dddim5)";
                 case 5:
                     return "Double Diminished Fifth (ddim5)";
                 case 6:
@@ -187,14 +205,18 @@ export function interval(note1, note2) {
                     return "Perfect Fifth (P5)";
                 case 8:
                     return "Augmented Fifth (Aug5)";
-                case 8:
+                case 9:
                     return "Double Augmented Fifth (AAug5)";
+                case 10:
+                    return "Triple Augmented Fifth (AAAug5)";
                 default:
                     return -1;
             }
             break;
         case 6:
             switch (noSemitones) {
+                case 5:
+                    return "Triple Diminished Sixth (dddim6)";
                 case 6:
                     return "Double Diminished Sixth (ddim6)";
                 case 7:
@@ -207,12 +229,16 @@ export function interval(note1, note2) {
                     return "Augmented Sixth (Aug6)";
                 case 11:
                     return "Double Augmented Sixth (AAug6)";
+                case 0:
+                    return "Triple Augmented Sixth (AAAug6)";
                 default:
                     return -1;
             }
             break;
         case 7:
             switch (noSemitones) {
+                case 7:
+                    return "Triple Diminished Seventh (dddim7)";
                 case 8:
                     return "Double Diminished Seventh (ddim7)";
                 case 9:
@@ -225,6 +251,8 @@ export function interval(note1, note2) {
                     return "Augmented Seventh (Aug7)";
                 case 1:
                     return "Double Augmented Seventh (AAug7)";
+                case 2:
+                    return "Triple Augmented Seventh (AAAug7)";
                 default:
                     return -1;
             }
