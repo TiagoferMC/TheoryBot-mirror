@@ -77,17 +77,18 @@ const adapter = new FileAsync(config.dbFile);
     });
 
     client.once("ready", async () => {
-        console.log("Discord Bot Ready!");
-        await db.get("guilds").forEach(async dbGuild => {
-                console.log(client.guilds.cache.filter(guild => id == dbGuild.id));
-                //if (client.guilds.cache.filter(guild => id == dbGuild.id))
-                //await deleteDBGuild(dbGuild.id);
+        await db.get("guilds").value().forEach(async dbGuild => {
+            if (client.guilds.cache.filter(guild => guild.id == dbGuild.guildID).first() == undefined) {
+                await deleteDBGuild(dbGuild.guildID);
+            }
         });
 
         client.guilds.cache.forEach(async guild => {
             if (await db.get("guilds").find({guildID: guild.id}).valueOf() == undefined)
                 await dbGuildDefaults(guild.id);
         });
+
+        console.log("Discord Bot Ready!");
     });
 
     client.on("message", async message => {
