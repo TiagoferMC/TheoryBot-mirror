@@ -60,7 +60,7 @@ export function noteToInt(note) {
             noteNum++;
             break;
         default:
-            // Do nothing
+        // Do nothing
     }
 
     return noteNum;
