@@ -79,7 +79,7 @@ const adapter = new FileAsync(config.dbFile);
     client.once("ready", async () => {
         console.log("Discord Bot Ready!");
         await db.get("guilds").forEach(async dbGuild => {
-                if (!client.guild.fetch(dbGuild.id))
+                if (client.guilds.cache.filter(id == dbGuild.id))
                     await deleteDBGuild(dbGuild.id);
         });
 
@@ -280,7 +280,7 @@ const adapter = new FileAsync(config.dbFile);
                                     .addField("Eb Standard (Hendrix) Tuning", "Eb-Ab-db-gb-bb-eb'", true)
                                     .addField("Open G", "D-G-d-g-b-d'\n \
                                         G-B-d-g-b-d' (Dobro)", true)
-                                    .addField("Open E", "E-B-e-ab-b-e'", true)
+                                    .addField("Open E", "E-B-e-g#-b-e'", true)
                                     .addField("Open C", "C-G-c-g-c'-e'", true)
                                     .addField("Drop D", "D-A-d-b-b-e", true)
                                     .addField("Double Drop D", "D-A-d-g-b-d'", true)
@@ -348,7 +348,7 @@ const adapter = new FileAsync(config.dbFile);
                                 .setTitle("TheoryBot - Banjo")
                                 .setDescription("Banjo Related Commands")
                                 .addField("Available Commands", `chords\n \
-                                    ~~scales~~ TBA \
+                                    ~~scales~~ WIP \
                                     tunings`)
                                 .setFooter("Aliases: banjo, banjos"));
                             break;
@@ -376,7 +376,13 @@ const adapter = new FileAsync(config.dbFile);
                                     .setColor(accentColor)
                                     .setTitle("Common Banjo Tunings")
                                     .addField("Banjo Standard (Open G)", "g'-d-g-b-d'", true)
-                                    .addField("Banjo Old-time D", "a'-d-a-d'-e'", true));
+                                    .addField("Banjo Old-time D", "a'-d-a-d'-e'", true)
+                                    .addField("Classic Banjo", "g'-c-g-b-d'", true)
+                                    .addField("Double C", "g'-c-g-c'-d'", true)
+                                    .addField("Sawmill", "g'-d-g-c'-d'", true)
+                                    .addField("4-string Standard", "c-g-b-d'", true)
+                                    .addField("Chicago Tuning", "d-g-b-e'", true)
+                                    .addField("Tenor Banjo", "c-g-d'-a'", true));
                             break; default:
                             sendMessage(`${command} ${args[0]} is not a valid TheoryBot command.\n\nSee ${prefix}${command} help for available commands.`);
                             break;
