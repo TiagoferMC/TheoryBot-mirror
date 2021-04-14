@@ -4,6 +4,7 @@ export default
     "defaultPrefix": "!",
     "defaultAccentColor":"#0099FF",
     "dbFile": "./db.json",
+    "dbSecret": "shh... it's a secret",
     "imgFolder": "./img",
     "circleOfFifths": "",
     "basicTerms": "",

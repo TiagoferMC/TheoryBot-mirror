@@ -2,6 +2,7 @@ import config from "./config.js";
 import * as music from "./music.js";
 import low from "lowdb";
 import FileAsync from "lowdb/adapters/FileAsync.js";
+import lowdbEncryption from 'lowdb-encryption';
 import { Client, MessageEmbed } from "discord.js";
 import colorVal from "validate-color";
 const { validateHTMLColorHex } = colorVal;
@@ -39,7 +40,13 @@ const colors = [
     "RANDOM"
 ];
 
-const adapter = new FileAsync(config.dbFile);
+const adapter = new FileAsync(config.dbFile, {
+    ...lowdbEncryption({
+        secret: config.dbSecret,
+        iterations: 100000
+    })
+});
+
 (async () => {
     const db = await low(adapter);
     db.defaults({ guilds: [] }).write();
