@@ -275,16 +275,16 @@ const adapter = new FileAsync(config.dbFile);
                                 sendEmbeddedMessage(new MessageEmbed()
                                     .setColor(accentColor)
                                     .setTitle("Common Guitar Tunings")
-                                    .addField("Standard Tuning", "E₂-A₂-D₃-G₃-B₃-E₄", true)
-                                    .addField("New Standard Tuning (NST)", "C₂-G₂-D₃-A₃-E₄-G₄", true)
-                                    .addField("Eb Standard (Hendrix) Tuning", "Eb₂-Ab₂-Db₃-Gb₃-Bb₃-Eb₄", true)
-                                    .addField("Open G", "D₂-G₂-D₃-G₃-B₃-D₄\n \
-                                                        G₂-B₂-D₃-G₃-B₃-D₄ (Dobro)", true)
-                                    .addField("Open E", "E₂-B₂-E₃-Ab₃-B₃-E₄", true)
-                                    .addField("Open C", "C₂-G₂-C₃-G₃-C₄-E₄", true)
-                                    .addField("Drop D", "D₂-A₂-D₃-G₃-B₃-E₄", true)
-                                    .addField("Double Drop D", "D₂-A₂-D₃-G₃-B₃-D₄", true)
-                                    .addField("Drop C", "C₂-G₂-C₃-F₃-A₃-D₄", true));
+                                    .addField("Standard Tuning", "E-A-d-g-b-e'", true)
+                                    .addField("New Standard Tuning (NST)", "C-G-d-a-e'-g'", true)
+                                    .addField("Eb Standard (Hendrix) Tuning", "Eb-Ab-db-gb-bb-eb'", true)
+                                    .addField("Open G", "D-G-d-g-b-d'\n \
+                                        G-B-d-g-b-d' (Dobro)", true)
+                                    .addField("Open E", "E-B-e-ab-b-e'", true)
+                                    .addField("Open C", "C-G-c-g-c'-e'", true)
+                                    .addField("Drop D", "D-A-d-b-b-e", true)
+                                    .addField("Double Drop D", "D-A-d-g-b-d'", true)
+                                    .addField("Drop C", "C-G-c-f-a-d'", true));
                             break;
                         default:
                             sendMessage(`${command} ${args[0]} is not a valid TheoryBot command.\n\nSee ${prefix}${command} help for available commands.`);
@@ -327,11 +327,11 @@ const adapter = new FileAsync(config.dbFile);
                                 sendEmbeddedMessage(new MessageEmbed()
                                     .setColor(accentColor)
                                     .setTitle("Common Mandolin Tunings")
-                                    .addField("Mandolin Standard Tuning", "G₂-D₃-A₃-E₄", true)
-                                    .addField("High D", "G₂-D₃-A₃-D₄", true)
-                                    .addField("Drop? A", "A₂-D₃-A₃-E₄", true)
-                                    .addField("Open G", "G₂-D₃-G₃-D₄", true)
-                                    .addField("G Power Tuning", "G₂-D₃-G₃-B(₄/₃?)", true));
+                                    .addField("Mandolin Standard Tuning", "g-d'-a'-e''", true)
+                                    .addField("G-Dad", "g-d'-a'-d''", true)
+                                    .addField("Cross A", "a-e'-a'-e''", true)
+                                    .addField("Cross G", "g-d'-g'-d''", true)
+                                    .addField("Open G", "g-d'-g'-b'", true));
                             break;
                         default:
                             sendMessage(`${command} ${args[0]} is not a valid TheoryBot command.\n\nSee ${prefix}${command} help for available commands.`);
@@ -375,8 +375,8 @@ const adapter = new FileAsync(config.dbFile);
                                 sendEmbeddedMessage(new MessageEmbed()
                                     .setColor(accentColor)
                                     .setTitle("Common Banjo Tunings")
-                                    .addField("Banjo Standard (Open G)", "G₄-D₃-G₃-B₃-D₄", true)
-                                    .addField("Banjo Old-time D", "A₄-D₃-A₃-D₄-E₄", true));
+                                    .addField("Banjo Standard (Open G)", "g'-d-g-b-d'", true)
+                                    .addField("Banjo Old-time D", "a'-d-a-d'-e'", true));
                             break; default:
                             sendMessage(`${command} ${args[0]} is not a valid TheoryBot command.\n\nSee ${prefix}${command} help for available commands.`);
                             break;
